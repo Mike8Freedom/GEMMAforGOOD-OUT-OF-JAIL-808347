@@ -19,15 +19,22 @@ client = OpenAI(
 
 @app.post("/v1/chat/completions")
 async def chat(request: Request):
-    body = await request.json()
-    response = client.chat.completions.create(
-        model="nvidia/Gemma-4-31B-IT-NVFP4:featherless-ai",
-        messages=body.get("messages", []),
-        temperature=0.7,
-        max_tokens=500
-    )
-    return response.model_dump()
+    try:
+        body = await request.json()
+        
+        response = client.chat.completions.create(
+            model="nvidia/Gemma-4-31B-IT-NVFP4:featherless-ai",
+            messages=body.get("messages", []),
+            temperature=0.65,      # чуть ниже
+            max_tokens=180,        # сильно уменьшил — это важно!
+            stream=False
+        )
+        
+        return response.model_dump()
+    
+    except Exception as e:
+        return {"choices": [{"message": {"role": "assistant", "content": "I'm having trouble thinking right now..."}}]}
 
 @app.get("/health")
 async def health():
-    return {"status": "Gemma 4 is running"}
+    return {"status": "Gemma 4 proxy online"}
