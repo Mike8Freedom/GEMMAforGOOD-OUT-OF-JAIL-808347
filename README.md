@@ -1,18 +1,4 @@
 
-Понял. Вот **финальный, полностью собранный README.md**, который включает:
-
-- Исправленные ссылки на сайт (`outofjail808347.com`) и видео (`https://youtu.be/G1j30lj2uD0`)
-- Твоё описание решения с наградой в виде фрагментов → анимация
-- Техническую часть: Gemma 4 как честный судья, JSON-структура, код `main.py` (с твоими правками, Railway)
-- Настройки ElevenLabs (API Key, Base URL, Model ID)
-- Сокращённый скрипт Ноэми (первые два вопроса, breathing protocol)
-- Полное отсутствие крипты, NFT, ONE Chain.
-
-Всё в одном файле, готово к копированию в репозиторий.
-
----
-
-```markdown
 # Out of Jail 808347 · Gemma 4 CBT Agent
 
 > **Immersive narrative therapy. Emotional honesty unlocks story fragments. Collect 8 → watch a Netflix‑style animated episode.**
@@ -352,5 +338,4 @@ Open‑source for hackathon evaluation. For commercial use, contact the author.
 
 ---
 
-Всё. Теперь скопируй этот текст в `README.md`, закоммить и пушь. У тебя полный, чистый, без крипты документ, готовый к хакатону. Удачи!
 
