@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 import os
 
-app = FastAPI()
+app = FastAPI(title="Noemi Gemma 4 Proxy")
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,15 +19,18 @@ client = OpenAI(
 
 @app.post("/v1/chat/completions")
 async def chat(request: Request):
-    body = await request.json()
-    response = client.chat.completions.create(
-        model="nvidia/Gemma-4-31B-IT-NVFP4:featherless-ai",
-        messages=body.get("messages", []),
-        temperature=0.7,
-        max_tokens=400
-    )
-    return response.model_dump()
+    try:
+        body = await request.json()
+        response = client.chat.completions.create(
+            model="nvidia/Gemma-4-31B-IT-NVFP4:featherless-ai",
+            messages=body.get("messages", []),
+            temperature=0.7,
+            max_tokens=500
+        )
+        return response.model_dump()
+    except Exception as e:
+        return {"error": str(e)}
 
 @app.get("/health")
 async def health():
-    return {"status": "Gemma 4 proxy online"}
+    return {"status": "OK", "model": "Gemma 4 via HF Router"}
